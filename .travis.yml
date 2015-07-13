@@ -1,6 +1,7 @@
 language: cpp
 
 script: cmake
+sudo: false
 
 # Test matrix:
 # - Build matrix per compiler and language version
@@ -63,7 +64,7 @@ before_install:
   - if [ "$CLANG_VERSION" == "3.4" ]; then export CXX="/usr/local/clang-3.4/bin/clang++" CC="/usr/local/clang-3.4/bin/clang"; fi
   - which $CXX
   - which $CC
-  - if [ -n "$CLANG_VERSION" ]; then sudo CXX=$CXX CC=$CC ./install_libcxx.sh; fi
+  - if [ -n "$CLANG_VERSION" ]; then CXX=$CXX CC=$CC ./install_libcxx.sh; fi
 
 install:
   - cd $CHECKOUT_PATH
